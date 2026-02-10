@@ -1,11 +1,14 @@
 import { useState } from "react";
+import MainDashboard from "./pages/MainDashboard";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <p className="font-bold text-3xl mt-10">piriyaluxan</p>
+      <div className="flex">
+        <MainDashboard />
+      </div>
     </>
   );
 }

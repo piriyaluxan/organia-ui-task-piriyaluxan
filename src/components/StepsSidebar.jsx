@@ -9,7 +9,7 @@ const steps = [
 
 const StepsSidebar = () => {
   return (
-    <div className="flex flex-col w-60 py-6">
+    <div className="flex flex-col  py-4 px-6 ">
       {steps.map((step, idx) => (
         <div key={step.label} className="relative flex items-start gap-4 pb-10">
           {/* Vertical Line */}

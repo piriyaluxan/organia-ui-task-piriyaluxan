@@ -1,5 +1,7 @@
 import React from "react";
-import Tab from "../components/Tab";
+import { useState } from "react";
+
+import Tab from "../components/TabBar";
 import DetailsForm from "../components/DetailsForm";
 import DetailsCard from "../components/DetailsCard";
 import Header from "../components/Header";
@@ -8,6 +10,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
+import TabBar from "../components/TabBar";
 
 const LiveIndicator = () => (
   <div className="flex items-center justify-center">
@@ -18,9 +21,13 @@ const LiveIndicator = () => (
   </div>
 );
 
+const tabs = ["T 01", "T 02", "T 03", "T 04", "T 05", "T 06"];
+
 const MainContent = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
-    <div className="flex-1 bg-gray-400">
+    <div className="flex-1 bg-gray-200 p-1.5">
       <div className="flex-col gap-4">
         <Header />
 
@@ -63,21 +70,15 @@ const MainContent = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div className="flex space-x-4">
-            <Tab title="T01" />
-            <Tab title="T02" />
-            <Tab title="T03" />
-            <Tab title="T04" />
-            <Tab title="T05" />
-            <Tab title="T06" />
-          </div>
-          <button className=" bg-gradient-to-r from-red-900 to-black text-white px-4 py-1 rounded-full hover:bg-red-700 w-32">
-            Add T
-          </button>
+        <div className="px-6 pt-3">
+          <TabBar
+            tabs={tabs}
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+          />
         </div>
 
-        <div className="flex bg-white ">
+        <div className="flex bg-gray-50 border-4 rounded-2xl border-black ">
           <StepsSidebar />
           <div className="grid grid-cols-1 gap-4 p-2">
             <div className="grid grid-cols-2 gap-2">

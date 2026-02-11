@@ -2,7 +2,7 @@ import { ChevronDown } from "lucide-react";
 
 const DetailsForm = () => {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
+    <div className="bg-white border-2 rounded-2xl border-black overflow-hidden shadow-sm">
       {/* Header */}
       <div className="bg-slate-800 px-4 py-2">
         <h3 className="text-white text-sm font-semibold">Sub Details</h3>
@@ -64,7 +64,7 @@ const DetailsForm = () => {
         </div>
 
         {/* Row 2 */}
-        <div className="border border-gray-200 rounded-lg p-4">
+        <div className="border border-black rounded-xl p-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {/* Quantity */}
             <div>

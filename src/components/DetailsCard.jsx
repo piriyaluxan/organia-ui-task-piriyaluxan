@@ -96,7 +96,7 @@ const DetailsCard = ({ title }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg border-2 rounded-2xl border-black overflow-hidden flex-1 shadow-sm">
+    <div className="bg-white  border-2 rounded-2xl border-black overflow-hidden flex-1 shadow-sm">
       {/* Header */}
       <div className="bg-slate-800 px-4 py-2">
         <h3 className="text-white text-sm font-semibold">{title}</h3>

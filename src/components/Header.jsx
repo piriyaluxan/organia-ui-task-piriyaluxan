@@ -4,7 +4,7 @@ import { TbUser } from "react-icons/tb";
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center border-b border-gray-300">
+    <div className="flex justify-between items-center border-b border-gray-300 pl-4 bg-white">
       <div className="flex items-center justify-between w-full gap-4 p-2 border-r border-gray-300">
         <div className="text-xl flex font-bold">Main Title</div>
         <div>

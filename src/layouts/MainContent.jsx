@@ -70,7 +70,7 @@ const MainContent = () => {
           </div>
         </div>
 
-        <div className="px-6 pt-3">
+        <div className="px-6 pt-1">
           <TabBar
             tabs={tabs}
             activeTab={activeTab}

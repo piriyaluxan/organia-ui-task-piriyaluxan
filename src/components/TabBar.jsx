@@ -11,7 +11,7 @@ const TabBar = ({ tabs, activeTab, onTabChange }) => {
               <>
                 {/* Left inverse curve */}
                 <div
-                  className="absolute bottom-0 -left-8 w-8 h-8  z-10"
+                  className="absolute bottom-0 -left-8 w-8 h-8  z-20"
                   style={{
                     borderBottomRightRadius: "20px",
                     boxShadow: "6px 6px 0 0 #0f172a", // slate-900

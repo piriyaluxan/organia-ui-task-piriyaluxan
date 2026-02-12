@@ -2,38 +2,37 @@ import React from "react";
 
 const TabBar = ({ tabs, activeTab, onTabChange }) => {
   return (
-    <div className="flex items-end bg-card border border-border rounded-t-lg overflow-hidden relative">
+    <div className="flex items-end  border border-border rounded-t-lg overflow-hidden relative pl-6">
       {tabs.map((tab, idx) => {
         const isActive = idx === activeTab;
         return (
-          <div key={tab} className="relative flex-shrink-0">
+          <div key={tab} className="relative flex-shrink-0 ">
             {isActive && (
               <>
                 {/* Left inverse curve */}
                 <div
-                  className="absolute bottom-0 -left-4 w-4 h-4 bg-card"
+                  className="absolute bottom-0 -left-8 w-8 h-8  z-10"
                   style={{
-                    borderBottomRightRadius: "16px",
-                    boxShadow: "6px 6px 0 0 hsl(var(--navy))",
-                    zIndex: 1,
+                    borderBottomRightRadius: "20px",
+                    boxShadow: "6px 6px 0 0 #0f172a", // slate-900
                   }}
                 />
+
                 {/* Right inverse curve */}
                 <div
-                  className="absolute bottom-0 -right-4 w-4 h-4 bg-card"
+                  className="absolute bottom-0 -right-8 w-8 h-8 z-10"
                   style={{
-                    borderBottomLeftRadius: "16px",
-                    boxShadow: "-6px 6px 0 0 hsl(var(--navy))",
-                    zIndex: 1,
+                    borderBottomLeftRadius: "20px",
+                    boxShadow: "-6px 6px 0 0 #0f172a", // slate-900 color
                   }}
                 />
               </>
             )}
             <button
               onClick={() => onTabChange(idx)}
-              className={`relative px-10 py-3 text-sm font-medium transition-all duration-300 ${
+              className={`relative px-10 py-3 text-sm font-medium transition-all  ${
                 isActive
-                  ? "bg-blue-900 text-white rounded-t-2xl z-10"
+                  ? "bg-[#0f172a] text-white rounded-t-2xl z-10"
                   : "bg-gray-100 text-black hover:bg-gray-200"
               }`}
             >

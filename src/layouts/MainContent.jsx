@@ -37,7 +37,7 @@ const MainContent = () => {
       <div className="flex-col gap-4">
         <Header />
 
-        <div className="flex justify-between items-center pl-4 border-b border-gray-300 bg-white">
+        <div className="flex justify-between items-center  sm:pl-4 border-b border-gray-300 bg-white">
           <div className="flex items-center gap-2 p-2">
             <div className="font-light">Main</div>
             <RiArrowRightSLine className="mt-0.5 " />
@@ -45,7 +45,7 @@ const MainContent = () => {
           </div>
         </div>
 
-        <div className="pl-4 flex justify-between items-center border-b border-gray-300 bg-white">
+        <div className="sm:pl-4 flex justify-between items-center border-b border-gray-300 bg-white">
           <div className="flex items-center gap-2 p-2">
             <div className="flex items-center justify-between gap-5 bg-black text-white px-4 py-1 rounded-full w-48">
               <div className="flex items-center">
@@ -75,7 +75,7 @@ const MainContent = () => {
           </button>
         </div>
 
-        <div className="pl-4 flex justify-between items-center border-b border-gray-300 bg-white">
+        <div className="sm:pl-4 flex justify-between items-center border-b border-gray-300 bg-white">
           <div className="flex items-center gap-2 p-2">
             <RiArrowRightSLine size={20} className="mt-0.5 " />
             <div className="font-semibold">Main Details</div>

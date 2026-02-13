@@ -104,7 +104,7 @@ const DetailsCard = ({ title }) => {
 
       <div className="p-4 space-y-6">
         {/* Name Row */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <label className="text-xs font-medium text-gray-700">
               First Name <span className="text-red-500">*</span>

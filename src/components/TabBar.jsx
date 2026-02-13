@@ -56,21 +56,26 @@ const TabBar = ({ tabs, activeTab, onTabChange }) => {
             </div>
 
             {/* TAB BUTTON */}
-            <button
-              onClick={() => onTabChange(idx)}
-              className={`
-                relative px-20 py-4 text-sm font-medium
-                transition-all duration-300 ease-out
-                rounded-t-2xl
-                ${
-                  isActive
-                    ? "bg-[#0f172a] text-white shadow-[0_-4px_8px_rgba(0,0,0,0.15)] z-10"
-                    : "bg-white text-black hover:bg-gray-200 z-0"
-                }
-              `}
-            >
-              {tab}
-            </button>
+            <div className="w-full overflow-x-auto">
+              <div className="flex flex-nowrap gap-2 min-w-max">
+                <button
+                  onClick={() => onTabChange(idx)}
+                  className={`
+        flex-shrink-0
+        px-20 py-4 text-sm font-medium
+        transition-all duration-300 ease-out
+        rounded-t-2xl
+        ${
+          isActive
+            ? "bg-[#0f172a] text-white shadow-[0_-4px_8px_rgba(0,0,0,0.15)] z-10"
+            : "bg-white text-black hover:bg-gray-200 z-0"
+        }
+      `}
+                >
+                  {tab}
+                </button>
+              </div>
+            </div>
           </div>
         );
       })}
@@ -78,7 +83,7 @@ const TabBar = ({ tabs, activeTab, onTabChange }) => {
       <div className="flex-1" />
 
       {/* Add Button */}
-      <button className="bg-gradient-to-r from-red-900 to-black text-white px-4 py-1.5 rounded-full hover:opacity-90 w-32 transition mr-2 mb-1">
+      <button className="flex bg-gradient-to-r from-red-900 to-black text-white px-10 py-1.5 rounded-full hover:opacity-90 w-32 transition mr-2 mb-1.5">
         Add T
       </button>
     </div>

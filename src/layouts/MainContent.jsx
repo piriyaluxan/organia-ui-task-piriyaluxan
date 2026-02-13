@@ -11,6 +11,12 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import TabBar from "../components/TabBar";
+import {
+  HiArrowNarrowLeft,
+  HiArrowNarrowRight,
+  HiOutlineArrowNarrowLeft,
+} from "react-icons/hi";
+import { HiMiniArrowsRightLeft } from "react-icons/hi2";
 
 const LiveIndicator = () => (
   <div className="flex items-center justify-center">
@@ -27,7 +33,7 @@ const MainContent = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="flex-1 bg-gray-200 p-1.5">
+    <div className="flex-1 bg-gray-200 p-0.5">
       <div className="flex-col gap-4">
         <Header />
 
@@ -61,6 +67,12 @@ const MainContent = () => {
               <BsCurrencyDollar className="bg-red-600 p-0.5 text-white rounded-full" />
             </div>
           </div>
+          <button className="mr-6 p-1  hover:bg-gray-100 rounded transition">
+            <HiMiniArrowsRightLeft
+              className="text-black font-black"
+              size={32}
+            />
+          </button>
         </div>
 
         <div className="pl-4 flex justify-between items-center border-b border-gray-300 bg-white">
@@ -69,23 +81,24 @@ const MainContent = () => {
             <div className="font-semibold">Main Details</div>
           </div>
         </div>
+        <div className="ml-2">
+          <div className="px-6 pt-0.5">
+            <TabBar
+              tabs={tabs}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+            />
+          </div>
 
-        <div className="px-6 pt-1">
-          <TabBar
-            tabs={tabs}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-          />
-        </div>
-
-        <div className="flex bg-gray-50 border-4 rounded-2xl border-black ">
-          <StepsSidebar />
-          <div className="grid grid-cols-1 gap-4 p-2">
-            <div className="grid grid-cols-2 gap-2">
-              <DetailsCard title="Details 1" />
-              <DetailsCard title="Details 2" />
+          <div className="flex bg-gray-50 border-4 rounded-2xl border-black ">
+            <StepsSidebar />
+            <div className="grid grid-cols-1 gap-4 p-2 w-full">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                <DetailsCard title="Details 1" />
+                <DetailsCard title="Details 2" />
+              </div>
+              <DetailsForm />
             </div>
-            <DetailsForm />
           </div>
         </div>
       </div>

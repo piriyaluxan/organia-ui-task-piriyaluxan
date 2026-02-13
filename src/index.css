@@ -5,3 +5,38 @@
 @tailwind components;
 /* stylelint-disable-next-line at-rule-no-unknown */
 @tailwind utilities;
+
+.styled-button {
+  background-color: #1a1a1a; /* Dark background color */
+  color: #ffffff; /* White text color */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Adjust padding as needed [1] */
+  border-radius: 20px; /* Rounded corners */
+  font-size: 16px;
+  cursor: pointer;
+  position: relative; /* Needed for the accent line */
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Red accent line using a pseudo-element */
+.styled-button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Thickness of the red line */
+  background-color: #ff0000; /* Red color */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for better user experience [2] */
+.styled-button:hover {
+  background-color: #333333;
+}
+
+.styled-button:hover::after {
+  transform: translateX(0);
+}

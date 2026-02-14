@@ -67,7 +67,6 @@ npm run preview
 
 ### Main Dashboard
 
-![Main Dashboard](image-3.png)
 ![Main Dashboard](image-4.png)
 
 ### Form Validation
@@ -80,8 +79,6 @@ npm run preview
 ![Mobile View with menu](image-2.png)
 
 _Responsive layout on mobile devices_
-
-_Note: Screenshots should be added to a `screenshots/` folder in the project root_
 
 ## Known Limitations and Unimplemented Features
 

@@ -56,7 +56,7 @@ const MainContent = () => {
 
         <div className="sm:pl-4 flex justify-between items-center border-b border-gray-300 bg-white">
           <div className="flex items-center gap-2 p-2">
-            <div className="flex items-center justify-between gap-5 bg-black text-white px-4 py-1 rounded-full w-48">
+            <div className="flex items-center justify-between gap-5 bg-slate-800 text-white px-4 py-1 rounded-full w-48">
               <div className="flex items-center">
                 <LiveIndicator />
                 <span className="text-white font-bold ml-4 mb-0.5">S - 01</span>

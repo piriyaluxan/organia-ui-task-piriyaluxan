@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import Tab from "../components/TabBar";
 import DetailsForm from "../components/DetailsForm";
@@ -31,6 +31,15 @@ const tabs = ["T 01", "T 02", "T 03", "T 04", "T 05", "T 06"];
 
 const MainContent = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const detailsCard1Ref = useRef();
+  const detailsCard2Ref = useRef();
+
+  const handleAdd = () => {
+    // Submit the first DetailsCard form
+    if (detailsCard1Ref.current) {
+      detailsCard1Ref.current.submit();
+    }
+  };
 
   return (
     <div className="flex-1 bg-gray-200 p-0.5">
@@ -87,6 +96,7 @@ const MainContent = () => {
               tabs={tabs}
               activeTab={activeTab}
               onTabChange={setActiveTab}
+              onAdd={handleAdd}
             />
           </div>
 
@@ -94,8 +104,8 @@ const MainContent = () => {
             <StepsSidebar />
             <div className="grid grid-cols-1 gap-4 p-2 w-full">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-                <DetailsCard title="Details 1" />
-                <DetailsCard title="Details 2" />
+                <DetailsCard ref={detailsCard1Ref} title="Details 1" />
+                <DetailsCard ref={detailsCard2Ref} title="Details 2" />
               </div>
               <DetailsForm />
             </div>

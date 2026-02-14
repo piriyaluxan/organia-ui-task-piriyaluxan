@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, forwardRef, useImperativeHandle } from "react";
 import { ChevronDown } from "lucide-react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import L from "leaflet";
@@ -12,7 +12,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-const DetailsCard = ({ title }) => {
+const DetailsCard = forwardRef(({ title }, ref) => {
   const [position, setPosition] = useState({
     lat: 9.665248645886242,
     lng: 80.02071385752006,
@@ -30,6 +30,12 @@ const DetailsCard = ({ title }) => {
     street: "",
     addressNote: "",
   });
+  const [errors, setErrors] = useState({});
+
+  // Expose handleSubmit to parent
+  useImperativeHandle(ref, () => ({
+    submit: handleSubmit,
+  }));
 
   // Handle input changes
   const handleChange = (field, value) => {
@@ -48,6 +54,43 @@ const DetailsCard = ({ title }) => {
     }
 
     setFormData(updatedFormData);
+    // Clear error for this field
+    if (errors[field]) {
+      setErrors({ ...errors, [field]: "" });
+    }
+  };
+
+  // Validation function
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.firstName.trim())
+      newErrors.firstName = "First Name is required";
+    if (!formData.contactPerson.trim())
+      newErrors.contactPerson = "Contact Person Name is required";
+    if (!formData.contactNumber.trim())
+      newErrors.contactNumber = "Contact Number is required";
+    else if (!/^\d{10}$/.test(formData.contactNumber.replace(/\D/g, "")))
+      newErrors.contactNumber = "Contact Number must be 10 digits";
+    if (!formData.province.trim()) newErrors.province = "Province is required";
+    if (!formData.district.trim()) newErrors.district = "District is required";
+    if (!formData.city.trim()) newErrors.city = "City is required";
+    if (!formData.street.trim()) newErrors.street = "Street is required";
+    if (!formData.addressNote.trim())
+      newErrors.addressNote = "Address Note is required";
+    return newErrors;
+  };
+
+  // Handle form submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length === 0) {
+      // Form is valid, you can submit the data here
+      console.log("Form submitted:", formData);
+      alert("Form submitted successfully!");
+    } else {
+      setErrors(validationErrors);
+    }
   };
 
   // Marker that updates on map click + reverse geocoding
@@ -96,7 +139,10 @@ const DetailsCard = ({ title }) => {
   };
 
   return (
-    <div className="bg-white  border-2 rounded-2xl border-black overflow-hidden flex-1 shadow-sm">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white  border-2 rounded-2xl border-black overflow-hidden flex-1 shadow-sm"
+    >
       {/* Header */}
       <div className="bg-slate-800 px-4 py-2">
         <h3 className="text-white text-sm font-semibold">{title}</h3>
@@ -116,6 +162,9 @@ const DetailsCard = ({ title }) => {
               onChange={(e) => handleChange("firstName", e.target.value)}
               className="mt-1 w-full rounded-full border border-gray-700 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500"
             />
+            {errors.firstName && (
+              <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
+            )}
           </div>
           <div>
             <label className="text-xs font-medium text-gray-700">
@@ -144,6 +193,11 @@ const DetailsCard = ({ title }) => {
               onChange={(e) => handleChange("contactPerson", e.target.value)}
               className="mt-1 w-full rounded-full border border-gray-700 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500"
             />
+            {errors.contactPerson && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.contactPerson}
+              </p>
+            )}
           </div>
           <div>
             <label className="text-xs font-medium text-gray-700">
@@ -170,6 +224,11 @@ const DetailsCard = ({ title }) => {
                 className="flex-1 px-2 py-1.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none bg-transparent"
               />
             </div>
+            {errors.contactNumber && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.contactNumber}
+              </p>
+            )}
           </div>
         </div>
 
@@ -228,6 +287,9 @@ const DetailsCard = ({ title }) => {
               placeholder="Province"
               className="mt-1 w-full rounded-full border border-gray-700 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500"
             />
+            {errors.province && (
+              <p className="text-red-500 text-xs mt-1">{errors.province}</p>
+            )}
           </div>
           <div>
             <label className="text-xs font-medium text-gray-700">
@@ -240,6 +302,9 @@ const DetailsCard = ({ title }) => {
               placeholder="District"
               className="mt-1 w-full rounded-full border border-gray-700 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500"
             />
+            {errors.district && (
+              <p className="text-red-500 text-xs mt-1">{errors.district}</p>
+            )}
           </div>
           <div>
             <label className="text-xs font-medium text-gray-700">
@@ -252,6 +317,9 @@ const DetailsCard = ({ title }) => {
               placeholder="City"
               className="mt-1 w-full rounded-full border border-gray-700 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500"
             />
+            {errors.city && (
+              <p className="text-red-500 text-xs mt-1">{errors.city}</p>
+            )}
           </div>
         </div>
 
@@ -268,6 +336,9 @@ const DetailsCard = ({ title }) => {
               placeholder="Street"
               className="mt-1 w-full rounded-full border border-gray-700 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500"
             />
+            {errors.street && (
+              <p className="text-red-500 text-xs mt-1">{errors.street}</p>
+            )}
           </div>
           <div>
             <label className="text-xs font-medium text-gray-700">
@@ -280,11 +351,14 @@ const DetailsCard = ({ title }) => {
               placeholder="Address Note"
               className="mt-1 w-full rounded-full border border-gray-700 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500"
             />
+            {errors.addressNote && (
+              <p className="text-red-500 text-xs mt-1">{errors.addressNote}</p>
+            )}
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
-};
+});
 
 export default DetailsCard;

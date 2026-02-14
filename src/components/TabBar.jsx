@@ -1,6 +1,6 @@
 import React from "react";
 
-const TabBar = ({ tabs, activeTab, onTabChange }) => {
+const TabBar = ({ tabs, activeTab, onTabChange, onAdd }) => {
   return (
     <div className="flex items-end border border-border rounded-t-lg relative overflow-hidden pr-4">
       {/* Scrollable Tabs Container */}
@@ -150,6 +150,7 @@ const TabBar = ({ tabs, activeTab, onTabChange }) => {
           {/* Button Container */}
           <div className="flex-1 bg-white w-full py-2 pr-2 md:pr-4 lg:pr-6 items-center justify-end flex rounded-tr-2xl">
             <button
+              onClick={onAdd}
               className="flex items-center justify-end
       bg-gradient-to-r from-red-900 to-black
       text-white
@@ -157,7 +158,7 @@ const TabBar = ({ tabs, activeTab, onTabChange }) => {
       py-1 sm:py-1.5 md:py-2
       text-xs sm:text-sm
       rounded-full
-      hover:opacity-90
+      hover:scale-105
       transition
       w-20 sm:w-24 lg:w-32"
             >

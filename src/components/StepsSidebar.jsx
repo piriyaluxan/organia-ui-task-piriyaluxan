@@ -36,9 +36,9 @@ const StepsSidebar = () => {
           {/* Step Content */}
           <div className="flex flex-col">
             <div
-              className={`h-10 w-10 rounded-lg flex items-center justify-center ${
+              className={`h-10 w-10 rounded-lg flex items-center justify-center bg-gray-200 ${
                 step.completed
-                  ? "bg-gray-200 text-green-600"
+                  ? " text-green-600"
                   : "bg-muted text-muted-foreground"
               }`}
             >
